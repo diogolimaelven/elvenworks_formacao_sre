@@ -1,0 +1,6 @@
+Flask==2.0.3
+prometheus-client==0.13.1
+prometheus-flask-exporter==0.18.7
+psycopg==3.0.10
+psycopg2==2.8.4
+psycopg2-binary==2.9.3

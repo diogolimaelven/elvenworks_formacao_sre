@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: didis/app:1.0
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_HOST
+          value: postgres-db-lb.postgres.svc.cluster.local
+        - name: DATABASE_NAME
+          value: "postgres"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_PASS
+          value: "mysecretpassword"
