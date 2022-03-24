@@ -1,6 +1,6 @@
 # Elvenworks Formação SRE
 
-## Codigos gerados aulas gravadas do Bootcamp
+## Codigos gerados das aulas gravadas do Bootcamp
 
 ### Aulas
 1. Ansible
