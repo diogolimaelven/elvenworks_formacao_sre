@@ -37,7 +37,7 @@ jobs:
 
       -
         name: Atualizando a infra 
-        run: cd docker_k8s/app_python &&  sed -i "s/didis\/app:.*/didis\/app:2.0/g" k8s/app_deployment.yaml
+        run: cd docker_k8s/app_python/k8s &&  sed -i "s/didis\/app:.*/didis\/app:2.0/g" k8s/app_deployment.yaml
       -
         name: push change
         uses: actions/checkout@v2
