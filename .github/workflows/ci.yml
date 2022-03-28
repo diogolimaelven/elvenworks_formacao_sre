@@ -16,4 +16,4 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
 #      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-      run: ls
+      run: cd  docker_k8s/app_python && docker build . --file Dockerfile --tag didis/$(date +%s) && docker images
