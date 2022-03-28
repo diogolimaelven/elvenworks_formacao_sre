@@ -37,14 +37,16 @@ jobs:
 
       -
         name: Atualizando a infra 
-        run: sed -i "s/didis\/app:.*/didis\/app:2.0/g" ./docker_k8s/app_python/k8s/app_deployment.yaml
+        uses: lefherz/action-sed@master
+        with:
+          args: sed -ie "s/didis\/app:.*/didis\/app:2.0/g" ./docker_k8s/app_python/k8s/app_deployment.yaml
       -
         name: push change
         uses: actions/checkout@v2
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: docker_k8s/app_python/k8s/app_deployment.yaml
+          source_file: ./docker_k8s/app_python/k8s/app_deployment.yaml
           destination_repo: diogolimaelven/elvenworks_formacao_sre
           destination_branch: main
           destination_folder: .
