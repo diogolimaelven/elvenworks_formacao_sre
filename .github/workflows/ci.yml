@@ -36,10 +36,8 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/app:2.0
 
       -
-        name: Atualizando a infra
-        uses: lefherz/action-sed@master
-        with:
-          arg: sed -i "s/didis\/app:.*/didis\/app:2.0/g" ./docker_k8s/app_python/k8s/app_deployment.yaml
+        name: Atualizando a infra 
+        run: sed -i "s/didis\/app:.*/didis\/app:2.0/g" ./docker_k8s/app_python/k8s/app_deployment.yaml
       -
         name: push change
         uses: actions/checkout@v2
