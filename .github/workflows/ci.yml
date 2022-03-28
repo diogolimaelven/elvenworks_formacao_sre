@@ -16,9 +16,7 @@ jobs:
       -
         name: Checkout 
         uses: actions/checkout@v2
-      -
-        name: dir true 
-        run: cd docker_k8s/app_python
+      
       -
         name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -36,3 +34,21 @@ jobs:
           file: ./docker_k8s/app_python/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/app:2.0
+
+      -
+        name: Atualizando a infra 
+        run: cd docker_k8s/app_python &&  sed -i "s/didis\/app:.*/didis\/app:2.0/g" k8s/app_deployment.yaml
+      -
+        name: push change
+        uses: actions/checkout@v2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: docker_k8s/app_python/k8s/app_deployment.yaml
+          destination_repo: diogolimaelven/elvenworks_formacao_sre
+          destination_branch: main
+          destination_folder: .
+          user_email: diogo.lima@elven.works
+          user_name: diogo.lima
+          commit_message: update image version ${{ steps.get_version.outputs.VERSION }} in yml file  
+
