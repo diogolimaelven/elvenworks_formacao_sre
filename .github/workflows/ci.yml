@@ -45,6 +45,8 @@ jobs:
         name: push change
         uses: test-room-7/action-update-file@v1
         with:
-          file-path: ./docker_k8s/app_python/k8s/app-deployment.yaml
+          file-path: docker_k8s/app_python/k8s/app-deployment.yaml
           commit-msg: Update resources
           github-token: ${{ secrets.API_TOKEN_GITHUB }}
+          committer-name: "diogolimaelven"
+          committer-email: "diogo.lima@elven.works"
