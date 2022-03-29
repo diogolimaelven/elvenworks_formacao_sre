@@ -41,14 +41,8 @@ jobs:
         run: cd ./docker_k8s/app_python/k8s/ && sudo sed 's/didis\/app:1.0/didis\/app:2.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
       -
         name: push change
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        uses: test-room-7/action-update-file@v1
         with:
-          source_file: ./docker_k8s/app_python/k8s/app-deployment.yaml
-          destination_repo: diogolimaelven/elvenworks_formacao_sre
-          destination_branch: main
-          destination_folder: ./docker_k8s/app_python/k8s/
-          user_email: diogo.lima@elven.works
-          user_name: diogolimaelven
-          commit_message: update image version ${{ steps.get_version.outputs.VERSION }} in yml file  
+          file-path: ./docker_k8s/app_python/k8s/app-deployment.yaml
+          commit-msg: Update resources
+          github-token: ${{ secrets.API_TOKEN_GITHUB }}
