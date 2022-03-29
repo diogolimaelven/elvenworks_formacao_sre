@@ -52,6 +52,6 @@ jobs:
         with:
           source-directory: './docker_k8s/app_python/k8s/'
           destination-github-username: 'diogolimaelven'
-          destination-repository-name: 'diogolimaelven/argo_cd'
+          destination-repository-name: 'argo_cd'
           user-email: diogo.lima@elven.works
           target-branch: main
