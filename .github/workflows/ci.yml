@@ -43,7 +43,8 @@ jobs:
       
         name: push change
         uses: dmnemec/copy_file_to_another_repo_action@main
-        
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: docker_k8s/app_python/k8s/
           destination_repo: diogolimaelven/argo_cd
