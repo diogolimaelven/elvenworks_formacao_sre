@@ -35,10 +35,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/app:2.0
 
-      
-      -
-        uses: actions/checkout@v2
-
       -
         name: Atualizando a infra 
         run: cd ./docker_k8s/app_python/k8s/ && sudo sed 's/didis\/app:1.0/didis\/app:2.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
