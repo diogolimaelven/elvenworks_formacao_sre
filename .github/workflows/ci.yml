@@ -41,17 +41,17 @@ jobs:
 
       -
         name: Atualizando a infra 
-       # run: cd ./docker_k8s/app_python/k8s/ && sudo sed 's/didis\/app:1.0/didis\/app:2.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
-        run: ls
+        run: cd ./docker_k8s/app_python/k8s/ && sudo sed 's/didis\/app:1.0/didis\/app:2.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
+        
       -
       
-        name: push change
-        uses: test-room-7/action-update-file@v1
+        name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          file-path: docker_k8s/app_python/k8s/app-deployment.yaml
-          commit-msg: Update resources
-          github-token: ${{ secrets.API_TOKEN_GITHUB }}
-          committer-name: "diogolimaelven"
-          committer-email: "diogo.lima@elven.works"
-          branch: main
-          allow-removing: true
+          source-directory: './docker_k8s/app_python/k8s/'
+          destination-github-username: 'diogolimaelven'
+          destination-repository-name: 'diogolimaelven/argo_cd'
+          user-email: diogo.lima@elven.works
+          target-branch: main
