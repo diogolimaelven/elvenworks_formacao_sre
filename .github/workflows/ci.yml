@@ -47,13 +47,13 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: docker_k8s/app_python/k8s/*
+          source_file: docker_k8s/app_python/k8s/
           destination_repo: diogolimaelven/argo_cd
           destination_branch: main
-          destination_folder: docker_k8s/app_python/k8s/
+          destination_folder: docker_k8s/app_python/
           user_email: diogo.lima@elven.works
           user_name: diogolimaelven
-          commit_message: update image 02 version ${{ steps.get_version.outputs.VERSION }} in yml file
+          commit_message: update image 03 version ${{ steps.get_version.outputs.VERSION }} in yml file
 
 
 
