@@ -37,7 +37,7 @@ jobs:
 
       -
         name: Atualizando a infra 
-        run: cd ./docker_k8s/app_python/k8s/ && sed -i 's/didis\/app:2.0/didis\/app:3.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
+        run: cd ./docker_k8s/app_python/k8s/ && sed -i 's/didis\/app:1.0/didis\/app:4.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
         
       -
       
@@ -53,7 +53,7 @@ jobs:
           destination_folder: docker_k8s/app_python/
           user_email: diogo.lima@elven.works
           user_name: diogolimaelven
-          commit_message: update image 03 version ${{ steps.get_version.outputs.VERSION }} in yml file
+          commit_message: update image 4 version ${{ steps.get_version.outputs.VERSION }} in yml file
 
 
 
