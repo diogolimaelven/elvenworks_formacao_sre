@@ -41,16 +41,14 @@ jobs:
         run: cd ./docker_k8s/app_python/k8s/ && sudo sed 's/didis\/app:1.0/didis\/app:2.0/g' app-deployment.yaml && cat app-deployment.yaml && cd
       -
         name: push change
-        uses: actions/checkout@v3
-        
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          repository: 'diogolimaelven/elvenworks_formacao_sre'
-          ref: main
-          token: ${{ secrets.API_TOKEN_GITHUB }}
-      - run: |
-            git add *
-            git config user.email diogo.lima@elven.works
-            git config user.name diogo.lima
-            git commit -m update image version ${{ steps.get_version.outputs.VERSION }} in yml file
-            git push
-          
+          source_file: ./docker_k8s/app_python/k8s/app-deployment.yaml
+          destination_repo: diogolimaelven/argo_cd
+          destination_branch: main
+          destination_folder: .
+          user_email: diogo.lima@elven.works
+          user_name: diogo.lima
+          commit_message: update image version ${{ steps.get_version.outputs.VERSION }} in yml file  
