@@ -50,3 +50,4 @@ jobs:
           github-token: ${{ secrets.API_TOKEN_GITHUB }}
           committer-name: "diogolimaelven"
           committer-email: "diogo.lima@elven.works"
+          allow-removing: true
