@@ -45,7 +45,7 @@ jobs:
         uses: dmnemec/copy_file_to_another_repo_action@main
         
         with:
-          source_file: ./docker_k8s/app_python/k8s/app-deployment.yaml
+          source_file: docker_k8s/app_python/k8s/app-deployment.yaml
           destination_repo: diogolimaelven/elvenworks_formacao_sre
           destination_branch: main
           destination_folder: docker_k8s/app_python/k8s/
