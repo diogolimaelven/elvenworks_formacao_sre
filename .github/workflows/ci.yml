@@ -50,5 +50,5 @@ jobs:
           destination_branch: main
           destination_folder: .
           user_email: diogo.lima@elven.works
-          user_name: diogo.lima
+          user_name: diogolimaelven
           commit_message: update image version ${{ steps.get_version.outputs.VERSION }} in yml file  
