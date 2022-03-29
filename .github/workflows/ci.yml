@@ -52,7 +52,7 @@ jobs:
           destination_folder: docker_k8s/app_python/k8s/
           user_email: diogo.lima@elven.works
           user_name: diogolimaelven
-          commit_message: update image version ${{ steps.get_version.outputs.VERSION }} in yml file
+          commit_message: update image 02 version ${{ steps.get_version.outputs.VERSION }} in yml file
 
 
 
