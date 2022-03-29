@@ -46,7 +46,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: ./docker_k8s/app_python/k8s/app_deployment.yaml
-          destination_repo: diogolimaelven/elvenworks_formacao_sre
+          destination_repo: diogolimaelven/argo_cd
           destination_branch: main
           destination_folder: .
           user_email: diogo.lima@elven.works
