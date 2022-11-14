@@ -13,24 +13,26 @@ provider "aws" {
   profile = var.profile
   region  = var.region
 }
+
 resource "aws_security_group" "allow_ssh" {
   name        = var.name_security_group
   description = "Allow ssh inbound traffic"
   vpc_id      = var.vpn_id_security_group
 
   ingress {
-    description      = "SSH"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
-    ingress {
-    description      = "HTTP"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+
+  ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -47,11 +49,11 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "copiar" {
-  ami                    = var.ami_aws_instance
-  instance_type          = var.type_aws_instance
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  key_name               = var.key_aws_instance
-  user_data = <<-EOF
+  ami                         = var.ami_aws_instance
+  instance_type               = var.type_aws_instance
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  key_name                    = var.key_aws_instance
+  user_data                   = <<-EOF
               #!/bin/bash 
               sudo apt update && sudo apt install curl ansible unzip -y 
               cd /tmp
@@ -59,10 +61,9 @@ resource "aws_instance" "copiar" {
               unzip ansible.zip
               sudo ansible-playbook wordpress.yml
               EOF
-  monitoring             = true
-  subnet_id              = var.subnet_id_aws_instance
+  monitoring                  = true
+  subnet_id                   = var.subnet_id_aws_instance
   associate_public_ip_address = true
-  
 
   tags = {
     Name = "Minha_primeira_maquina"
@@ -93,7 +94,6 @@ resource "aws_instance" "copiar" {
 #   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 #   subnet_id              = var.subnet_id_aws_instance
 #   associate_public_ip_address = true
-  
 
 #   tags = {
 #     Name = "Minha_primeira_maquina"
